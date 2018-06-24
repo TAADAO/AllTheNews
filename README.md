@@ -19,6 +19,7 @@ Notes
 - [Body Parser](https://github.com/expressjs/body-parser)
 - [Morgan](https://www.npmjs.com/package/morgan)
 - [Express Handlebars](https://www.npmjs.com/package/express-handlebars)
+- [MaterializeCSS](https://materializecss.com/)
 
 ## License
 
