@@ -1,5 +1,4 @@
-$(document).ready(function () 
-{
+$(document).ready(function () {
     $('.button-collapse').sideNav();
 
     // define the modal
@@ -7,8 +6,7 @@ $(document).ready(function ()
     });
 
     // onclick for the buttons for each note
-    $('.noteButton').on('click', function (noteRet) 
-    {
+    $('.noteButton').on('click', function (noteRet) {
 
         // if we have a duplicate listener, stop it from listening
         noteRet.stopImmediatePropagation();
@@ -16,8 +14,8 @@ $(document).ready(function ()
         // select button to work with
         var currentButton = $(this).attr('id');
 
-        // call the populateNote function for the button
-        populateNote(currentButton);
+        // call the popNote function for the button
+        popNote(currentButton);
 
         // open the modal
         $('#noteModal').modal('open');
@@ -29,13 +27,13 @@ $(document).ready(function ()
             // define the text we'll be saving
             var noteText = $('#noteText');
 
-                $.post("/note/" + currentButton, $('#noteForm').serialize())
-                    .done(function (data) {
-                        populateNote(currentButton);
-                    })
-                    .fail(function (error) {
-                        console.log("Cannot", error);
-                    });
+            $.post("/note/" + currentButton, $('#noteForm').serialize())
+                .done(function (data) {
+                    popNote(currentButton);
+                })
+                .fail(function (error) {
+                    console.log("Cannot", error);
+                });
 
             // empty out the note
             noteText.val('');
@@ -45,24 +43,21 @@ $(document).ready(function ()
     });
 
     // function to read in notes
-    function populateNote(id) 
-    {
+    function popNote(id) {
 
-        // first empty the div
+        // empty the div
         $('.messages').empty();
 
-        // read in the note
-        $.get("/note/" + id, function (data) 
-        {
+        // read the note
+        $.get("/note/" + id, function (data) {
 
             // populate notes them
-            for (var i = 0; i < data.length; i++) 
-            {
+            for (var i = 0; i < data.length; i++) {
                 var note = $(
                     '<li class="note collection-item">'
                     + '<p>'
-                    + (i+1) + ': ' + data[i].noteText + '</p>'
-                    + '<button class="individualNoteButton waves-effect waves-red btn-flat blue" data-currentButtonId="' + data[i]._id + '">Delete ' + (i+1) + '</button>'
+                    + (i + 1) + '. ' + data[i].noteText + '</p>'
+                    + '<button class="uniqueNoteButton waves-effect waves-light btn" data-currentButtonId="' + data[i]._id + '"><i class="material-icons right">delete</i> Delete #' + (i + 1) + '</button>'
                     + '</li>'
                 );
 
@@ -71,30 +66,28 @@ $(document).ready(function ()
             }
 
         })
-        .then(function() 
-        {
+            .then(function () {
 
-            // make a listener for deleting the notes
-            $(".individualNoteButton").on("click", function() 
-            {
+                // make a listener for deleting the notes
+                $(".uniqueNoteButton").on("click", function () {
 
-                var currentButtonId = $(this).data(currentButtonId);
+                    var currentButtonId = $(this).data(currentButtonId);
 
-           
-                $.post("/deleteNote/" + currentButtonId.currentbuttonid, $('#noteForm').serialize())
-                    .done(function (data) {
 
-                        // after deleting the note, close the modal
-                        $('#noteModal').modal('close');
-                    })
+                    $.post("/deleteNote/" + currentButtonId.currentbuttonid, $('#noteForm').serialize())
+                        .done(function (data) {
 
-                .fail(function () {
-                    console.log("Cannot get notes");
+                            // after deleting the note, close the modal
+                            $('#noteModal').modal('close');
+                        })
+
+                        .fail(function () {
+                            console.log("Error: Cannot get notes");
+                        });
+
+
                 });
-
-        
-            });
-        })
+            })
 
     }
 

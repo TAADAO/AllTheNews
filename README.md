@@ -1,5 +1,5 @@
 # AllTheNews
-All the News That's Fit to Scrape
+All the News That's Fit to Scrape. View [DEMO](https://floating-fortress-84910.herokuapp.com/).
 
 ## Screenshots
 

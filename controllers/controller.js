@@ -4,7 +4,6 @@ var cheerio = require('cheerio');
 // get html
 var request = require('request');
 
-
 // Use Article model
 var Article = require('../models/Article');
 
