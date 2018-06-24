@@ -1,11 +1,11 @@
 <nav>
     <div class="nav-wrapper pink lighten-1">
-        <a href="#" class="brand-logo pink lighten-1"> <img src="https://cdn3.iconfinder.com/data/icons/ballicons-reloaded-free/512/icon-70-512.png"> News Scraper</a>
+        <a href="#" class="brand-logo pink lighten-1"> <img src="https://cdn3.iconfinder.com/data/icons/ballicons-reloaded-free/512/icon-70-512.png"> News Scraper by Carolyn Rojsutivat</a>
         <ul class="right">
 
             <li>
-                <a href="/scrape" class="waves-effect waves-light btn">
-                    <i class="material-icons right">system_update_alt</i>Scrape!</a>
+                <a href="/scrape" class="waves-effect waves-light btn tooltipped" data-position="bottom" data-tooltip="Scrape the NPR website for news articles!">
+                    <i class="material-icons right">system_update_alt</i>Scrape</a>
             </li>
 
 
@@ -28,7 +28,7 @@
                     <a href="{{this.link}}" class="collection-item tooltipped" target="_blank" data-position="bottom" data-tooltip="Click the link to view the full news article!">{{this.title}}</a>
                 </div>
                 <div class="col s4">
-                    <button class="noteButton waves-effect waves-light btn" id="{{this._id}}" alt="add/view comments"><i class="material-icons right">speaker_notes</i> Notes</button>
+                    <button class="noteButton waves-effect waves-light btn tooltipped" id="{{this._id}}" data-position="bottom" data-tooltip="Add/view your notes"><i class="material-icons right">speaker_notes</i> Notes</button>
                 </div>
 
             </div>
