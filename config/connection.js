@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds217351.mlab.com:17351/allthenews/');
+mongoose.connect('mongodb://heroku_c0g2w7r4:1gebku9hkjm2f4cufid074ke8j@ds117431.mlab.com:17431/heroku_c0g2w7r4');
 
 var db = mongoose.connection;
 
